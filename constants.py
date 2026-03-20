@@ -1,0 +1,2 @@
+tile_width = 64
+tile_height = 32
