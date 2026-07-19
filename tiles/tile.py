@@ -1,7 +1,14 @@
-class Tile():
-    def __init__(self):
-        self.x_coord = 0 # Set from map.do_init
-        self.y_coord = 0 # Set from map.do_init
-        
-        self.image = None
+import view.sprite as sprite
 
+
+class Tile(sprite.Sprite):
+    ''' Abstract class for tiles in the world. '''
+    def __init__(self):
+        super().__init__()
+        self.coords = (0, 0)
+
+        # TILE OWNER, possible choices:
+        # - player
+        # - city
+        # - nobody (None)
+        self.owner = None 

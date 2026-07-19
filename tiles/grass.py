@@ -8,3 +8,4 @@ class Grass(tile.Tile):
     def __init__(self):
         super().__init__()
         self.image = loader.load_image("assets/grass.png")
+

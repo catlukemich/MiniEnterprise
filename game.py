@@ -1,44 +1,90 @@
+import random
 import globs
 import pygame
 import main
 import map
+import inet.server as server
+import inet.client as client
+import inet.null_endpoint as null_endpoint
 import interactors.picker as picker 
 import interactors.highlighter as highlighter 
 import interactors.router as router
-import view 
+import player.player as player
+import view.view as view 
 
 ''' Subclass of the main class '''
 class Game(main.Main):
     def __init__(self):
-        globs.game = self
+        globs.Globals.game = self
         super().__init__()
+
+        random.seed(1)
 
 
     def do_init(self):
 
+        the_view = view.View()
         the_map = map.Map() # Map
+
+        
+        # Interactors - elements that interact with the world
         the_picker = picker.Picker() # Picker
         the_highlighter = highlighter.Highlighter() # Highlighter
-        the_view = view.View()
-        the_router = router.Router()
+        the_player = player.Player()
+        ################## Instancing client and server (TODO)
+        # the_server = server.Server()
+        # the_client = client.Client()
 
+        # Initialization 
         the_map.do_init()
         the_picker.do_init()
         the_highlighter.do_init()
         the_view.do_init()
-        the_router.do_init()
+        the_player.do_init()
+        
+        ################# Network initialization (TODO):
+        # server_running = False
+        # client_running = False
+        # try:
+        #     server_running = the_server.do_init(0.2) # <-- If the server waits for 2 secs(debugging purposes) go to single player mode.
+        #     if not server_running:
+        #         client_running = the_client.do_init()
+        # except TimeoutError:
+        #     pass # <-- Will be single player mode vvvvv.
+        
+        # if server_running:
+        #     globs.Globals.endpoint = the_server
+        #     the_player.name = "Player1"
+        # if client_running:
+        #     globs.Globals.endpoint = the_client
+        #     the_player.name = "Player2"
+
+        # if not server_running and not client_running:
+        #     globs.Globals.endpoint = null_endpoint.NullEndpoint()
+
+
+    def do_updates(self, delta_time):
+        globs.Globals.view.do_update(delta_time)
 
 
     def do_event(self, event):
-        globs.picker.do_event(event)
-        globs.highlighter.do_event(event)
-        globs.view.do_event(event)
-        globs.router.do_event(event)
+        ''' Pass events to the interactors'''
+        globs.Globals.picker.do_event(event)
+        globs.Globals.highlighter.do_event(event)
+        globs.Globals.view.do_event(event)
+        globs.Globals.player.do_event(event)
+        
+        self.handle_network()
 
+
+    def handle_network(self):
+        if globs.Globals.endpoint is not None:
+            messages = globs.Globals.endpoint.recv()
+            router.on_network(messages)
 
 
     def do_drawing(self):
-        globs.map.do_draw()
+        globs.Globals.view.do_draw()
 
 
 if __name__ == "__main__":
