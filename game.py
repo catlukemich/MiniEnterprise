@@ -11,6 +11,7 @@ import interactors.highlighter as highlighter
 import interactors.router as router
 import player.player as player
 import view.view as view 
+import vehicles.car_spawner as car_spawner
 import ui.ui as ui
 
 ''' Subclass of the main class '''
@@ -43,9 +44,14 @@ class Game(main.Main):
         the_view.do_init()
         the_player.do_init()
         
+        # Spawners
+        self.the_car_spawner = car_spawner.CarSpawner()
+
         # UI initialization:
         the_ui = ui.UI()
         the_ui.show()
+
+
 
         ################# Network initialization (TODO):
         # server_running = False
@@ -70,6 +76,7 @@ class Game(main.Main):
 
     def do_updates(self, delta_time):
         globs.view.do_update(delta_time)
+        self.the_car_spawner.update(delta_time)
 
 
     def do_event(self, event):

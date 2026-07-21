@@ -76,6 +76,9 @@ class View():
 
     def add_sprite(self, sprite):
         self.sprites.append(sprite)
+
+    def get_sprites(self):
+        return self.sprites
     
     def remove_sprite(self, sprite):
         if sprite in self.sprites: self.sprites.remove(sprite)

@@ -14,7 +14,7 @@ class Main():
     def __init__(self):
         ### System initialization ###
         pygame.init()
-        globs.screen = pygame.display.set_mode((32 * 32,16*32 + 32))
+        globs.screen = pygame.display.set_mode((1440,960))
 
         self.gui_input = gui.Input()
         globs.gui = gui.Gui(input)

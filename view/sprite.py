@@ -34,13 +34,14 @@ class Sprite():
     def do_draw(self, blitfun = None):
         ''' Draw the sprite onto the screen '''
         x, y = globs.view.project(self.location)
-        w, h = self.image.get_size()
-        x -= w / 2
-        y -= h / 2
         if self.image != None:
+            w, h = self.image.get_size()
+            x -= w / 2
+            y -= h / 2
             if blitfun: blitfun(x, y)
             else: globs.screen.blit(self.image, (x, y))
-
+        elif blitfun:
+            blitfun(x, y)
 
     def update(self, delta_time):
         pass

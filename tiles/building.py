@@ -13,6 +13,7 @@ class Building(tile.Tile):
         self.image : pygame.Surface = image 
         self.name = name
         self.population = population
+        self.layer = 1
 
     def copy(self):
         return Building(self.image, self.name, self.population)

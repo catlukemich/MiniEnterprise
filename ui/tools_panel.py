@@ -8,8 +8,8 @@ class ToolsPanel(gui.Frame, gui.WidgetListener):
     def __init__(self):
         super().__init__()
         panel_height = 120
-        self.set_dimensions(32*32, panel_height)
-        self.set_position(0, 16* 32 + 32 - panel_height)
+        self.set_dimensions(1440, panel_height)
+        self.set_position(0, 960 - panel_height)
 
 
         #---------- Container for horizontally aligning all the widget's: ------------#
@@ -41,7 +41,7 @@ class ToolsPanel(gui.Frame, gui.WidgetListener):
         # Grain production chain:
         grain_category_container = gui.LabelFrame("Grain")
         grain_category_container.set_layout(gui.HorizontalLayout())
-        grain_category_container.set_paddings(gui.Pad(4,4,10,10))
+        grain_category_container.set_paddings(gui.Pad(4,4,11,10))
         grain_category_container.set_margins(gui.EqualPad(3))
         self.create_button("assets/industries/farm.png",   grain_category_container)
         self.create_button("assets/industries/grain_mill.png",    grain_category_container)

@@ -33,6 +33,7 @@ class Map:
                     tile = tiles.tree.Tree()
                 else:
                     tile = tiles.mountain.Mountain()
+                tile.layer = 0
                 row.append(tile)
                 tile.location = (iso_x, iso_y, iso_z)
                 tile.coords = (x_coord, y_coord)
@@ -71,6 +72,8 @@ class Map:
             return self.tiles[coord_y][coord_x]
         except IndexError: return None
 
+    def get_tiles(self):
+        return self.tiles
 
     def set_tile_coords(self, coords, tile):
         ''' Set the tile replacing old tile with new tile using coordinates '''
