@@ -7,7 +7,7 @@ import tiles.road as road
 def build_road(tile) -> road.Road:
     if not isinstance(tile, road.Road):
         new_road = road.Road()
-        globs.Globals.map.set_tile(tile, new_road)
+        globs.map.set_tile(tile, new_road)
         realign_roads(new_road, True)
         return new_road
     else:
@@ -19,7 +19,7 @@ def realign_roads(atile, surrounding = False):
     # alignement = [False, False, False, False] # n, s, e, w
 
     # Helper functions
-    t = globs.Globals.map.get_tile
+    t = globs.map.get_tile
     ir = lambda tile: isinstance(tile, road.Road)
     
     if not ir(atile) and not surrounding: return
@@ -43,8 +43,8 @@ def realign_roads(atile, surrounding = False):
     path = f"assets/road-{astring}.png"
     aroad.image = loader.load_image(path)
         
-    globs.Globals.map.set_tile_coords(coords, aroad)
-    globs.Globals.view.replace_sprite(atile, aroad)
+    globs.map.set_tile_coords(coords, aroad)
+    globs.view.replace_sprite(atile, aroad)
 
     if surrounding:
         realign_roads(tile_n)
@@ -61,8 +61,8 @@ def on_network(messages : list[str]):
             x_coord = int(message.split(" ")[2])
             y_coord = int(message.split(" ")[3])
 
-            tile = globs.Globals.map.get_tile((x_coord, y_coord))
+            tile = globs.map.get_tile((x_coord, y_coord))
             if tile.owner == None:
-                road = build_road(globs.Globals.map.get_tile((x_coord, y_coord)))
+                road = build_road(globs.map.get_tile((x_coord, y_coord)))
                 road.owner = player
 

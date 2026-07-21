@@ -11,11 +11,12 @@ import interactors.highlighter as highlighter
 import interactors.router as router
 import player.player as player
 import view.view as view 
+import ui.ui as ui
 
 ''' Subclass of the main class '''
 class Game(main.Main):
     def __init__(self):
-        globs.Globals.game = self
+        globs.game = self
         super().__init__()
 
         random.seed(1)
@@ -42,6 +43,10 @@ class Game(main.Main):
         the_view.do_init()
         the_player.do_init()
         
+        # UI initialization:
+        the_ui = ui.UI()
+        the_ui.show()
+
         ################# Network initialization (TODO):
         # server_running = False
         # client_running = False
@@ -53,38 +58,38 @@ class Game(main.Main):
         #     pass # <-- Will be single player mode vvvvv.
         
         # if server_running:
-        #     globs.Globals.endpoint = the_server
+        #     globs.endpoint = the_server
         #     the_player.name = "Player1"
         # if client_running:
-        #     globs.Globals.endpoint = the_client
+        #     globs.endpoint = the_client
         #     the_player.name = "Player2"
 
         # if not server_running and not client_running:
-        #     globs.Globals.endpoint = null_endpoint.NullEndpoint()
+        #     globs.endpoint = null_endpoint.NullEndpoint()
 
 
     def do_updates(self, delta_time):
-        globs.Globals.view.do_update(delta_time)
+        globs.view.do_update(delta_time)
 
 
     def do_event(self, event):
         ''' Pass events to the interactors'''
-        globs.Globals.picker.do_event(event)
-        globs.Globals.highlighter.do_event(event)
-        globs.Globals.view.do_event(event)
-        globs.Globals.player.do_event(event)
+        globs.picker.do_event(event)
+        globs.highlighter.do_event(event)
+        globs.view.do_event(event)
+        globs.player.do_event(event)
         
         self.handle_network()
 
 
     def handle_network(self):
-        if globs.Globals.endpoint is not None:
-            messages = globs.Globals.endpoint.recv()
+        if globs.endpoint is not None:
+            messages = globs.endpoint.recv()
             router.on_network(messages)
 
 
     def do_drawing(self):
-        globs.Globals.view.do_draw()
+        globs.view.do_draw()
 
 
 if __name__ == "__main__":

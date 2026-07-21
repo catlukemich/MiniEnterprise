@@ -6,7 +6,7 @@ class Highlighter():
     ''' Highlighter used to highlight tiles, where the cursor is currently '''
 
     def __init__(self):
-        globs.Globals.highlighter = self
+        globs.highlighter = self
 
         self.previous_tile = None # Previous tile reference when restoring
         self.original_image = None # Original image of previous tile for restoration
@@ -22,7 +22,7 @@ class Highlighter():
         if event.type == pygame.MOUSEMOTION:
             if self.previous_tile != None:
                 self.previous_tile.image = self.original_image    
-            self.current_tile = globs.Globals.view.pick(event.pos) # <-- The new tile to be highlighted.
+            self.current_tile = globs.view.pick(event.pos) # <-- The new tile to be highlighted.
             if self.current_tile != None:
                 self.original_image = self.current_tile.image
                 colored_image = self.current_tile.image.copy()

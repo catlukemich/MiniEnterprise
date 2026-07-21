@@ -7,7 +7,7 @@ import constants
 
 class View():
     def __init__(self):
-        globs.Globals.view = self
+        globs.view = self
         self.sprites : list[sprite.Sprite] = []
         self.offset_x = 0
         self.offset_y = 0

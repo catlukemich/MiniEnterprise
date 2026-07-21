@@ -11,7 +11,7 @@ import city.city as city
 
 class Map:
     def __init__(self):
-        globs.Globals.map = self
+        globs.map = self
         self.size = 50
         self.tiles = []
         self.cities = []
@@ -36,7 +36,7 @@ class Map:
                 row.append(tile)
                 tile.location = (iso_x, iso_y, iso_z)
                 tile.coords = (x_coord, y_coord)
-                globs.Globals.view.add_sprite(tile)
+                globs.view.add_sprite(tile)
             
 
         # Create cities:
@@ -86,4 +86,4 @@ class Map:
         if coords[0] < self.size and coords[1] < self.size:
             if coords[0] >= 0 and coords[1] >= 0:
                 self.tiles[coords[1]][coords[0]] = new_tile
-        globs.Globals.view.replace_sprite(old_tile, new_tile)
+        globs.view.replace_sprite(old_tile, new_tile)

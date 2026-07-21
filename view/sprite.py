@@ -3,6 +3,20 @@ import pygame
 import globs
 
 
+#       ___
+#   ,--[___]--,
+#  /           \
+# |,.--'```'--.,|    ,
+# |'-.,_____,.-'|    ||
+# |'-.,_____,.-'|    ||
+# |             |   _||_
+# |  P A I N T  |  ///\\\
+# |             |  HHHHHH
+# |'-.,_____,.-'|  ||||||
+# `'-.,_____,.-''  ||||||  jgs
+# 
+
+
 class Sprite():
     ''' Normal isometric Sprite - a static image with no animation. '''
 
@@ -19,13 +33,13 @@ class Sprite():
 
     def do_draw(self, blitfun = None):
         ''' Draw the sprite onto the screen '''
-        x, y = globs.Globals.view.project(self.location)
+        x, y = globs.view.project(self.location)
         w, h = self.image.get_size()
         x -= w / 2
         y -= h / 2
         if self.image != None:
             if blitfun: blitfun(x, y)
-            else: globs.Globals.screen.blit(self.image, (x, y))
+            else: globs.screen.blit(self.image, (x, y))
 
 
     def update(self, delta_time):

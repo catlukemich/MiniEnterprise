@@ -19,5 +19,5 @@ class Text(sprite.Sprite):
 
 
     def do_draw(self, blitfun=None):
-        x, y = globs.Globals.view.project(self.location)
-        globs.Globals.screen.blit(self.surface, (x, y))
+        x, y = globs.view.project(self.location)
+        globs.screen.blit(self.surface, (x, y))

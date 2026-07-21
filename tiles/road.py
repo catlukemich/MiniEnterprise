@@ -1,4 +1,4 @@
-from . import tile
+from tiles import tile
 import loader
 
 

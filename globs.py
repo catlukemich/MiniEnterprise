@@ -1,39 +1,29 @@
 # Global variables for the game
-class Globals:
 
 
-    ### Imports here with m-prefix indicate that the import is a module and
-    ### is present here to avoid naming collisions.
 
-    #------- In-game part -------#
-    import pygame
-    screen : pygame.Surface = None  # <-- The main screen where everything id drawn into.
-    
-    import game as mgame
-    game : mgame.Game = None # <-- Reference to the global game instance.
+### Imports here with m-prefix indicate that the import is a module and
+### is present here to avoid naming collisions.
 
-    import ui.gui as mgui
-    gui : mgui.GUI = None
+#------- In-game part -------#
+game = None # <-- Reference to the global game instance.
 
-    import view.view as mview
-    view : mview.View = None # <-- View - the isometric projection takes place here.
+screen = None  # <-- The main screen where everything id drawn into.
 
-    import map as mmap
-    map : mmap.Map = None # <-- The map, where all the tiles reside.
+gui = None
 
-    import interactors.picker as mpicker
-    picker : mpicker.Picker = None # <-- Picker (unused).
+view = None # <-- View - the isometric projection takes place here.
 
-    import player.player as mplayer 
-    player : mplayer.Player = None # <-- Player instance indicating player's name and other characteristics.
-    
-    #------ Networked part -------#
-    import inet.server as mserver 
-    server : mserver.Server = None
+map = None # <-- The map, where all the tiles reside.
 
-    import inet.client as mclient
-    client : mclient.Client = None
+picker = None # <-- Picker (unused).
 
-    import inet.endpoint as mnetwork_agent
-    endpoint : mnetwork_agent.Endpoint = None
+player = None # <-- Player instance indicating player's name and other characteristics.
+
+#------ Networked part -------#
+server = None
+
+client = None
+
+endpoint = None
 

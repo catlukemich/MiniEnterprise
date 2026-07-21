@@ -37,7 +37,7 @@ class City():
         sign = text.Text(self.name)
         sign.layer = 1
         sign.location = (self.x_coord, self.y_coord, 0)
-        globs.Globals.view.add_sprite(sign)
+        globs.view.add_sprite(sign)
 
 
     def place(self, x_coord, y_coord):
@@ -46,8 +46,8 @@ class City():
         self.generate()
 
     def do_draw(self):
-        x, y = globs.Globals.view.project((self.x_coord, self.y_coord, 0))
-        globs.Globals.screen.blit(self.sign, (x, y))
+        x, y = globs.view.project((self.x_coord, self.y_coord, 0))
+        globs.screen.blit(self.sign, (x, y))
 
 
     def generate(self):
@@ -60,7 +60,7 @@ class City():
             x = 0
             for x_coord in range(nw_x_coord, nw_x_coord + self.size):
                 if x % 3 == 0 or y % 3 == 0:
-                    tile = globs.Globals.map.get_tile((x_coord, y_coord))
+                    tile = globs.map.get_tile((x_coord, y_coord))
                     if tile:
                         # Make a road around the city or block
                         aroad = router.build_road(tile)
@@ -68,10 +68,10 @@ class City():
                             aroad.owner = self
                 else:    
                     # Else make a buildings inside the block
-                    tile = globs.Globals.map.get_tile((x_coord, y_coord))
+                    tile = globs.map.get_tile((x_coord, y_coord))
                     if tile:
-                        abuilding = building.make()
-                        globs.Globals.map.set_tile(tile, abuilding)
+                        abuilding = building.make_random_building()
+                        globs.map.set_tile(tile, abuilding)
                         abuilding.owner = self
                         
 

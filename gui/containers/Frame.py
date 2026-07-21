@@ -140,3 +140,14 @@ class Frame(Container):
             Container.draw(self, surface)
 
         surface.set_clip(parent_clip)
+
+
+    def on_mouse_button_down(self, event):
+        return True
+    
+    def on_mouse_button_up(self, event):
+        return True
+    
+    def on_click(self, event):
+        print("frame")
+        return True
