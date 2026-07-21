@@ -13,7 +13,7 @@ class BackgroundDrawer():
     else:
       self.color = color
 
-  def setColor(self, color):
+  def set_color(self, color):
     self.color = color
 
 
