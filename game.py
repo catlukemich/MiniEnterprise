@@ -22,9 +22,6 @@ class Game(main.Main):
 
         random.seed(1)
 
-
-    def do_init(self):
-
         the_view = view.View()
         the_map = map.Map() # Map
 
@@ -100,4 +97,4 @@ class Game(main.Main):
 
 
 if __name__ == "__main__":
-    Game()
+    Game().run()

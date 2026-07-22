@@ -14,7 +14,7 @@ class Main():
     def __init__(self):
         ### System initialization ###
         pygame.init()
-        globs.screen = pygame.display.set_mode((1440,960))
+        globs.screen = pygame.display.set_mode((1440,660))
 
         self.gui_input = gui.Input()
         globs.gui = gui.Gui(input)
@@ -31,6 +31,8 @@ class Main():
         globs.gui.add_widget(img_button)
         img_button.set_dimensions(120, 100)
 
+
+    def run(self):
         clock = pygame.time.Clock()
         done = False
 
@@ -75,4 +77,4 @@ class Main():
 
 
 if __name__ == "__main__":
-    Main()
+    Main().run()

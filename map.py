@@ -33,7 +33,6 @@ class Map:
                     tile = tiles.tree.Tree()
                 else:
                     tile = tiles.mountain.Mountain()
-                tile.layer = 0
                 row.append(tile)
                 tile.location = (iso_x, iso_y, iso_z)
                 tile.coords = (x_coord, y_coord)

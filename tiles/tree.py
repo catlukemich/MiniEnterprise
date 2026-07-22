@@ -17,4 +17,5 @@ class Tree(tile.Tile):
     def __init__(self):
         super().__init__()
         self.image = loader.load_image("assets/tree.png")
+        self.layer = 1
 

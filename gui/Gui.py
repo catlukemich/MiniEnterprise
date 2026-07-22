@@ -118,7 +118,6 @@ class Gui(Container, MouseListener, KeyboardListener):
         return event_consumed
 
     def on_window_resize(self, event):
-        print(event)
         for widget in self.widgets:
             widget.on_window_resize(event)
 

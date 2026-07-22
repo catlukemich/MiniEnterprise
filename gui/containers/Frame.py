@@ -149,5 +149,4 @@ class Frame(Container):
         return True
     
     def on_click(self, event):
-        print("frame")
         return True
