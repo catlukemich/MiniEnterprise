@@ -15,6 +15,8 @@ class Main():
         ### System initialization ###
         pygame.init()
         globs.screen = pygame.display.set_mode((1440,660))
+        pygame.display.set_caption("MiniEnterprise")
+        pygame.display.set_icon(pygame.image.load("gui/icon.png"))
 
         self.gui_input = gui.Input()
         globs.gui = gui.Gui(input)

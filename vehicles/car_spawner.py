@@ -6,7 +6,7 @@ import loader
 from vehicles.car import Car
 from tiles.road import Road
 
-RESPAWN_TIME = 10000000
+RESPAWN_TIME = 3000
 
 possible_cars = [
     "assets/vehicles/car1.png",
