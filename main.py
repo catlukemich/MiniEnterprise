@@ -21,16 +21,7 @@ class Main():
         self.gui_input.add_mouse_listener(globs.gui)
         self.gui_input.add_keyboard_listener(globs.gui)
 
-        label_img_button = gui.Label("Image button:")
-        label_img_button.set_position(35, 15)
-        globs.gui.add_widget(label_img_button)
-
-        img_pressed = gui.load_image("res/aircraft.png")
-        img_button = gui.ImageButton(img_pressed)
-        img_button.set_position(20, 40)
-        globs.gui.add_widget(img_button)
-        img_button.set_dimensions(120, 100)
-
+      
 
     def run(self):
         clock = pygame.time.Clock()

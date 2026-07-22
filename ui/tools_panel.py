@@ -9,7 +9,7 @@ class ToolsPanel(gui.Frame, gui.WidgetListener):
         super().__init__()
         panel_height = 120
         self.set_dimensions(1440, panel_height)
-        self.set_position(0, 960 - panel_height)
+        self.set_position(0, 660 - panel_height)
 
 
         #---------- Container for horizontally aligning all the widget's: ------------#
