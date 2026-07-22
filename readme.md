@@ -35,5 +35,5 @@ Or from command line, provided that the cloned directory is a working directory 
 
 Screenshot
 ----------
-
+ 
 ![MiniEnterprise screenshot 1](https://i.imgur.com/Z9HXTYg.png "MiniEnterprise")
